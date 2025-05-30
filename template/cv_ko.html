@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>이력서 - Sebastiano De Gobbi - AI & 데이터 전문가</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: #fff;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .profile-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    
+    .header-content {
+      flex-grow: 1;
+      text-align: left;
+    }
+    
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      font-weight: 300;
+    }
+    
+    .header .title {
+      font-size: 1.3em;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+    
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9em;
+    }
+    
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 0;
+    }
+    
+    .sidebar {
+      background-color: #f8f9fa;
+      padding: 40px 30px;
+    }
+    
+    .content {
+      padding: 40px;
+    }
+    
+    .section {
+      margin-bottom: 35px;
+    }
+    
+    .section h2 {
+      color: #2c3e50;
+      font-size: 1.4em;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .section h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      border-radius: 2px;
+    }
+    
+    .about p {
+      text-align: justify;
+      font-size: 0.95em;
+      margin-bottom: 15px;
+    }
+    
+    .experience-item, .education-item {
+      margin-bottom: 25px;
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .experience-item:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      background: #3b82f6;
+      border-radius: 50%;
+    }
+    
+    .experience-item h3 {
+      color: #2c3e50;
+      font-size: 1.1em;
+      margin-bottom: 5px;
+    }
+    
+    .company {
+      color: #1e3a8a;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .period {
+      color: #666;
+      font-size: 0.9em;
+      margin-bottom: 10px;
+    }
+    
+    .location {
+      color: #888;
+      font-size: 0.85em;
+      margin-bottom: 10px;
+    }
+    
+    .description {
+      font-size: 0.9em;
+      line-height: 1.5;
+    }
+    
+    .description ul {
+      margin-left: 15px;
+      margin-top: 8px;
+    }
+    
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .skill-tag {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8em;
+      font-weight: 500;
+    }
+    
+    .skill-category {
+      margin-bottom: 20px;
+    }
+    
+    .skill-category h4 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-size: 0.95em;
+    }
+    
+    .languages ul {
+      list-style: none;
+    }
+    
+    .languages li {
+      margin-bottom: 8px;
+      padding: 8px;
+      background: white;
+      border-radius: 5px;
+      border-left: 3px solid #3b82f6;
+    }
+    
+    .back-to-home {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 0.9em;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .back-to-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
+      background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+    }
+    
+    @media (max-width: 768px) {
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+      
+      .header-content {
+        text-align: center;
+      }
+      
+      .header h1 {
+        font-size: 2em;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .back-to-home {
+        top: 10px;
+        left: 10px;
+        padding: 10px 16px;
+        font-size: 0.8em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="../index.html" class="back-to-home">
+    <span>🏠</span>
+    <span>홈</span>
+  </a>
+  
+  <div class="container">
+    <div class="header">
+      <img src="profile-pic_2.png" alt="Sebastiano De Gobbi" class="profile-image">
+      <div class="header-content">
+        <h1>Sebastiano De Gobbi</h1>
+        <div class="title">전자기술자 • 통신시스템기술자 • AI & 데이터 전문가</div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span>📧</span> sebastiano.degobbi.pro@gmail.com
+          </div>
+          <div class="contact-item">
+            <span>📱</span> +39 328 8993884
+          </div>
+          <div class="contact-item">
+            <span>💼</span> <a href="https://www.linkedin.com/in/sebastiano-de-gobbi/" style="color: white; text-decoration: none;">LinkedIn</a>
+          </div>
+          <div class="contact-item">
+            <span>💻</span> <a href="https://github.com/seb0t" style="color: white; text-decoration: none;">GitHub</a>
+          </div>
+          <div class="contact-item">
+            <span>📍</span> 이탈리아 리메나(파도바)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="sidebar">
+        <div class="section">
+          <h2>기술 역량</h2>
+          
+          <div class="skill-category">
+            <h4>프로그래밍 언어</h4>
+            <div class="skills-container">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">C#</span>
+              <span class="skill-tag">HTML</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>프레임워크 & 라이브러리</h4>
+            <div class="skills-container">
+              <span class="skill-tag">NumPy</span>
+              <span class="skill-tag">Pandas</span>
+              <span class="skill-tag">Plotly</span>
+              <span class="skill-tag">Streamlit</span>
+              <span class="skill-tag">Flask</span>
+              <span class="skill-tag">scikit-learn</span>
+              <span class="skill-tag">PyTorch</span>
+              <span class="skill-tag">TensorFlow</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>인공지능</h4>
+            <div class="skills-container">
+              <span class="skill-tag">머신러닝</span>
+              <span class="skill-tag">딥러닝</span>
+              <span class="skill-tag">강화학습</span>
+              <span class="skill-tag">컴퓨터 비전</span>
+              <span class="skill-tag">자연어처리</span>
+              <span class="skill-tag">인공신경망</span>
+              <span class="skill-tag">합성곱신경망</span>
+              <span class="skill-tag">LSTM</span>
+              <span class="skill-tag">생성형 AI</span>
+              <span class="skill-tag">대규모언어모델</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>고급 AI 시스템</h4>
+            <div class="skills-container">
+              <span class="skill-tag">RAG 시스템</span>
+              <span class="skill-tag">AI 에이전트 시스템</span>
+              <span class="skill-tag">벡터 DB</span>
+              <span class="skill-tag">그래프 DB</span>
+              <span class="skill-tag">FAISS</span>
+              <span class="skill-tag">Qdrant</span>
+              <span class="skill-tag">Ollama</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>데이터 사이언스</h4>
+            <div class="skills-container">
+              <span class="skill-tag">데이터 분석</span>
+              <span class="skill-tag">데이터 추출</span>
+              <span class="skill-tag">데이터 정제</span>
+              <span class="skill-tag">웹 스크래핑</span>
+              <span class="skill-tag">지리공간 데이터</span>
+              <span class="skill-tag">지도학습</span>
+              <span class="skill-tag">비지도학습</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>데이터베이스 & 클라우드</h4>
+            <div class="skills-container">
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">NoSQL</span>
+              <span class="skill-tag">MongoDB</span>
+              <span class="skill-tag">Elasticsearch</span>
+              <span class="skill-tag">Apache Spark</span>
+              <span class="skill-tag">Azure</span>
+              <span class="skill-tag">AWS</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>서비스 & API</h4>
+            <div class="skills-container">
+              <span class="skill-tag">OpenAI</span>
+              <span class="skill-tag">Gemini</span>
+              <span class="skill-tag">APIs</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">Git</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section languages">
+          <h2>언어 능력</h2>
+          <ul>
+            <li><strong>이탈리아어:</strong> 모국어</li>
+            <li><strong>영어:</strong> 기술/전문 수준</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>관심사</h2>
+          <div class="skills-container">
+            <span class="skill-tag">비디오 게임</span>
+            <span class="skill-tag">사진촬영</span>
+            <span class="skill-tag">영상편집</span>
+            <span class="skill-tag">통계학</span>
+            <span class="skill-tag">e스포츠</span>
+            <span class="skill-tag">맨몸운동</span>
+            <span class="skill-tag">논리 퍼즐</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="section about">
+          <h2>전문가 프로필</h2>
+          <p>
+            전자기술 및 통신시스템 기술자로서, 기술혁신 세계에서 역사적 혁명이 될 것으로 예상되는 분야에서 지난 2년간 엄격한 규율로 학습과 훈련에 투자했습니다.
+          </p>
+          <p>
+            인공지능과 관련된 모든 분야에서 전문화를 진행하고 있으며, 항상 이론과 새로운 기술 발전의 이해에 중점을 두면서 동시에 모든 것을 실무에 적용하고 개인 프로젝트에서 테스트하고 있습니다.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>경력</h2>
+          
+          <div class="experience-item">
+            <h3>인공지능 연구원</h3>
+            <div class="company">Gruppo Euris Spa</div>
+            <div class="period">2025년 3월 - 2025년 5월 (3개월)</div>
+            <div class="location">이탈리아 베네토주 파도바</div>
+            <div class="description">
+              RAG(검색 증강 생성) 기술 기반 에이전트 시스템의 정성적 솔루션과 메트릭 연구를 위한 인공지능 부서와의 협업.
+              <ul>
+                <li>로컬 설정 개발 (Ollama, 오픈소스 모델)</li>
+                <li>벡터 데이터베이스 작업 (FAISS, Qdrant)</li>
+                <li>구조화된 출력을 가진 OpenAI API 전문화</li>
+                <li>고급 NLP 기술 및 graphRAG</li>
+                <li>데이터 분석을 위한 Streamlit 동적 웹 앱 개발</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <h3>정보기술 인턴</h3>
+            <div class="company">Tecnolaser S.r.l.</div>
+            <div class="period">2024년 6월 - 2024년 8월 (3개월)</div>
+            <div class="location">이탈리아 베네토주 쿠르타롤로</div>
+            <div class="description">
+              내부 애플리케이션 및 ERP 시스템에 중점을 둔 IT 부서 인턴십.
+              <ul>
+                <li>내부 애플리케이션 관리 및 유지보수</li>
+                <li>내부 사용자 기술 지원</li>
+                <li>새로운 기능 개발 및 업데이트</li>
+                <li>ERP 프로세스 최적화 및 사용자 매뉴얼 작성</li>
+                <li>PHP, SQL, HTML, Docker 기술 개발</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <h3>시니어 게임 수익 회계사 & 전자기술자</h3>
+            <div class="company">Dalla Pria Entertainment Group</div>
+            <div class="period">2010년 12월 - 2023년 12월 (13년)</div>
+            <div class="location">이탈리아 피오베 디 사코</div>
+            <div class="description">
+              <ul>
+                <li>엔터테인먼트 기기의 전기 및 전자 수리</li>
+                <li>전자 기기 수익 관리</li>
+                <li>홍보 및 상업 운영</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <h3>통신장비 기술자</h3>
+            <div class="company">I.m.t.r</div>
+            <div class="period">2006년 3월 - 2007년 4월</div>
+            <div class="location">이탈리아 베네토주 파도바</div>
+            <div class="description">
+              인터넷 및 음성 서비스를 위한 통신 시스템, 무선 브리지, 안테나 설치 및 유지보수 전문 기술자.
+              <ul>
+                <li>GSM, UMTS, WiFi 시스템 및 유선</li>
+                <li>대규모 무선 네트워크 설정</li>
+                <li>전자기 호환성 정밀 측정</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>학력</h2>
+          
+          <div class="education-item">
+            <h3>데이터 분석 및 인공지능 ITS 디플로마</h3>
+            <div class="company">ITS Digital Academy</div>
+            <div class="period">2023년 10월 - 2025년 7월</div>
+            <div class="description">
+              2년제 과정 - 인공지능 & 데이터 전문가 (EQ5)
+              <br><strong>획득 기술:</strong> 인공신경망, AI, 통계분석, 컴퓨터 비전, TensorFlow, Python, 데이터 추출, SQL, ETL, GIS, 데이터 분석, CNN, 웹 스크래핑, 머신러닝
+            </div>
+          </div>
+
+          <div class="education-item">
+            <h3>시니어 인증 기술자 - 전자기 호환성</h3>
+            <div class="company">ITIS F.Severi, 파도바 대학교</div>
+            <div class="period">2003 - 2004</div>
+            <div class="description">
+              전자기 호환성 디플로마 후 자격증. 전자기 간섭, 공인 실험실 측정, CE 마킹 프로세스에 관한 과정.
+            </div>
+          </div>
+
+          <div class="education-item">
+            <h3>디플로마 - 전자 및 통신 시니어 기술자</h3>
+            <div class="company">ITIS F.Severi</div>
+            <div class="period">1998 - 2003</div>
+            <div class="description">
+              전자 및 통신, 자동 전자 시스템, 전기공학, 기술 설계 전문화.
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>개인 프로필 및 소프트 스킬</h2>
+          <p>
+            다양한 환경에서 번영하고 동료들과 의미 있는 관계를 구축하는 매우 다재다능하고 긍정적인 전문가입니다. 조화롭고 협력적인 분위기에서 일하는 것이 창의성과 생산성을 모두 촉진하는 직업 생활의 가장 자극적인 측면 중 하나라고 굳게 믿습니다.
+          </p>
+          <p>
+            저의 본래 회의적이고 분석적인 성격은 논리적 추론과 구체적 데이터를 바탕으로 선택을 내리며, 모든 결정을 합리성으로 접근하게 합니다. 도전과 자기 도전을 좋아하며, 지속적으로 성장 기회를 찾고 있습니다. 다양한 분야의 과학 대중화 채널을 흥미롭게 따르며, 항상 활발한 지적 호기심을 유지합니다. 제 개인적 관심사는 주로 기술, 비디오 게임, 디지털 문화를 중심으로 하며, 맨몸운동을 통해 체형을 유지하고 있습니다.
+          </p>
+          <p>
+            <strong>주요 소프트 스킬:</strong> 팀 협업, 다양성, 분석적 사고, 문제 해결, 지속적 학습, 효과적 의사소통, 일과 삶의 균형 관리.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

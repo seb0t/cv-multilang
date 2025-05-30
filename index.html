@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sebastiano De Gobbi - CV Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      padding: 50px 40px;
+    }
+    
+    .profile-image {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+      margin: 0 auto 20px;
+      display: block;
+    }
+    
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      font-weight: 300;
+    }
+    
+    .header .title {
+      font-size: 1.2em;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+    
+    .welcome-text {
+      font-size: 1.1em;
+      opacity: 0.95;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .content {
+      padding: 50px 40px;
+    }
+    
+    .language-selection h2 {
+      color: #2c3e50;
+      font-size: 1.8em;
+      margin-bottom: 10px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .language-selection h2:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      border-radius: 2px;
+    }
+    
+    .subtitle {
+      color: #666;
+      font-size: 1.1em;
+      margin-bottom: 40px;
+    }
+    
+    .language-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .language-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 18px 24px;
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 1.1em;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+    }
+    
+    .language-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(30, 58, 138, 0.4);
+      background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+    }
+    
+    .language-button .flag {
+      font-size: 1.5em;
+    }
+    
+    .contact-section {
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid #e0e0e0;
+    }
+    
+    .contact-section h3 {
+      color: #2c3e50;
+      font-size: 1.3em;
+      margin-bottom: 20px;
+    }
+    
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95em;
+      color: #555;
+    }
+    
+    .contact-item a {
+      color: #1e3a8a;
+      text-decoration: none;
+    }
+    
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        margin: 10px;
+      }
+      
+      .header {
+        padding: 30px 20px;
+      }
+      
+      .header h1 {
+        font-size: 2em;
+      }
+      
+      .content {
+        padding: 30px 20px;
+      }
+      
+      .language-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="template/profile-pic_2.png" alt="Sebastiano De Gobbi" class="profile-image">
+      <h1>Sebastiano De Gobbi</h1>
+      <div class="title">AI & Data Specialist • Electronics & Telecommunications Technician</div>
+      <div class="welcome-text">
+        Welcome to my professional portfolio. Please select your preferred language to view my curriculum vitae.
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="language-selection">
+        <h2>Select Language</h2>
+        <p class="subtitle">Choose your preferred language to view my CV</p>
+        
+        <div class="language-grid">
+          <a href="template/cv_it.html" class="language-button">
+            <span class="flag">🇮🇹</span>
+            <span>Italiano</span>
+          </a>
+          
+          <a href="template/cv_en.html" class="language-button">
+            <span class="flag">🇬🇧</span>
+            <span>English</span>
+          </a>
+          
+          <a href="template/cv_es.html" class="language-button">
+            <span class="flag">🇪🇸</span>
+            <span>Español</span>
+          </a>
+          
+          <a href="template/cv_de.html" class="language-button">
+            <span class="flag">🇩🇪</span>
+            <span>Deutsch</span>
+          </a>
+          
+          <a href="template/cv_fr.html" class="language-button">
+            <span class="flag">🇫🇷</span>
+            <span>Français</span>
+          </a>
+          
+          <a href="template/cv_pt.html" class="language-button">
+            <span class="flag">🇵🇹</span>
+            <span>Português</span>
+          </a>
+          
+          <a href="template/cv_zh.html" class="language-button">
+            <span class="flag">🇨🇳</span>
+            <span>中文</span>
+          </a>
+          
+          <a href="template/cv_ja.html" class="language-button">
+            <span class="flag">🇯🇵</span>
+            <span>日本語</span>
+          </a>
+          
+          <a href="template/cv_ko.html" class="language-button">
+            <span class="flag">🇰🇷</span>
+            <span>한국어</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-section">
+        <h3>Contact Information</h3>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span>📧</span>
+            <a href="mailto:sebastiano.degobbi.pro@gmail.com">sebastiano.degobbi.pro@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <span>💼</span>
+            <a href="https://www.linkedin.com/in/sebastiano-de-gobbi/" target="_blank">LinkedIn</a>
+          </div>
+          <div class="contact-item">
+            <span>💻</span>
+            <a href="https://github.com/seb0t" target="_blank">GitHub</a>
+          </div>
+          <div class="contact-item">
+            <span>📍</span>
+            <span>Limena (PD), Italy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

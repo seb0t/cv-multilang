@@ -198,4 +198,4 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 ⭐ If you found this project helpful, please give it a star!
 
-Made with ❤️ by Sebastiano De Gobbi
+Made with ❤️ and GenAi 

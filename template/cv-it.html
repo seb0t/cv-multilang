@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV - Sebastiano De Gobbi - AI & Data Specialist</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #333;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: #fff;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      overflow: hidden;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      padding: 40px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+    
+    .profile-image {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    
+    .header-content {
+      flex-grow: 1;
+      text-align: left;
+    }
+    
+    .header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      font-weight: 300;
+    }
+    
+    .header .title {
+      font-size: 1.3em;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+    
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9em;
+    }
+    
+    .main-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 0;
+    }
+    
+    .sidebar {
+      background-color: #f8f9fa;
+      padding: 40px 30px;
+    }
+    
+    .content {
+      padding: 40px;
+    }
+    
+    .section {
+      margin-bottom: 35px;
+    }
+    
+    .section h2 {
+      color: #2c3e50;
+      font-size: 1.4em;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .section h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      border-radius: 2px;
+    }
+    
+    .about p {
+      text-align: justify;
+      font-size: 0.95em;
+      margin-bottom: 15px;
+    }
+    
+    .experience-item, .education-item {
+      margin-bottom: 25px;
+      position: relative;
+      padding-left: 20px;
+    }
+    
+    .experience-item:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      background: #3b82f6;
+      border-radius: 50%;
+    }
+    
+    .experience-item h3 {
+      color: #2c3e50;
+      font-size: 1.1em;
+      margin-bottom: 5px;
+    }
+    
+    .company {
+      color: #1e3a8a;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+    
+    .period {
+      color: #666;
+      font-size: 0.9em;
+      margin-bottom: 10px;
+    }
+    
+    .location {
+      color: #888;
+      font-size: 0.85em;
+      margin-bottom: 10px;
+    }
+    
+    .description {
+      font-size: 0.9em;
+      line-height: 1.5;
+    }
+    
+    .description ul {
+      margin-left: 15px;
+      margin-top: 8px;
+    }
+    
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .skill-tag {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8em;
+      font-weight: 500;
+    }
+    
+    .skill-category {
+      margin-bottom: 20px;
+    }
+    
+    .skill-category h4 {
+      color: #2c3e50;
+      margin-bottom: 10px;
+      font-size: 0.95em;
+    }
+    
+    .languages ul {
+      list-style: none;
+    }
+    
+    .languages li {
+      margin-bottom: 8px;
+      padding: 8px;
+      background: white;
+      border-radius: 5px;
+      border-left: 3px solid #3b82f6;
+    }
+    
+    .back-to-home {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-size: 0.9em;
+      font-weight: 500;
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .back-to-home:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(30, 58, 138, 0.4);
+      background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
+    }
+    
+    @media (max-width: 768px) {
+      .main-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .header {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+      
+      .header-content {
+        text-align: center;
+      }
+      
+      .header h1 {
+        font-size: 2em;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .back-to-home {
+        top: 10px;
+        left: 10px;
+        padding: 10px 16px;
+        font-size: 0.8em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="../index.html" class="back-to-home">
+    <span>🏠</span>
+    <span>Home</span>
+  </a>
+  
+  <div class="container">
+    <div class="header">
+      <img src="profile-pic_2.png" alt="Sebastiano De Gobbi" class="profile-image">
+      <div class="header-content">
+        <h1>Sebastiano De Gobbi</h1>
+        <div class="title">Tecnico Elettronico • Tecnico sistemi di Telecomunicazione • Ai & Data Specialist</div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span>📧</span> sebastiano.degobbi.pro@gmail.com
+          </div>
+          <div class="contact-item">
+            <span>📱</span> +39 328 8993884
+          </div>
+          <div class="contact-item">
+            <span>💼</span> <a href="https://www.linkedin.com/in/sebastiano-de-gobbi/" style="color: white; text-decoration: none;">LinkedIn</a>
+          </div>
+          <div class="contact-item">
+            <span>💻</span> <a href="https://github.com/seb0t" style="color: white; text-decoration: none;">GitHub</a>
+          </div>
+          <div class="contact-item">
+            <span>📍</span> Limena (PD), Italia
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="sidebar">
+        <div class="section">
+          <h2>Competenze Tecniche</h2>
+          
+          <div class="skill-category">
+            <h4>Linguaggi di Programmazione</h4>
+            <div class="skills-container">
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">C#</span>
+              <span class="skill-tag">HTML</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Framework & Librerie</h4>
+            <div class="skills-container">
+              <span class="skill-tag">NumPy</span>
+              <span class="skill-tag">Pandas</span>
+              <span class="skill-tag">Plotly</span>
+              <span class="skill-tag">Streamlit</span>
+              <span class="skill-tag">Flask</span>
+              <span class="skill-tag">scikit-learn</span>
+              <span class="skill-tag">PyTorch</span>
+              <span class="skill-tag">TensorFlow</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Intelligenza Artificiale</h4>
+            <div class="skills-container">
+              <span class="skill-tag">Machine Learning</span>
+              <span class="skill-tag">Deep Learning</span>
+              <span class="skill-tag">Reinforcement Learning</span>
+              <span class="skill-tag">Computer Vision</span>
+              <span class="skill-tag">NLP</span>
+              <span class="skill-tag">ANN</span>
+              <span class="skill-tag">CNN</span>
+              <span class="skill-tag">LSTM</span>
+              <span class="skill-tag">Generative AI</span>
+              <span class="skill-tag">LLM</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Sistemi AI Avanzati</h4>
+            <div class="skills-container">
+              <span class="skill-tag">RAG Systems</span>
+              <span class="skill-tag">AI Agentic Systems</span>
+              <span class="skill-tag">Vector DB</span>
+              <span class="skill-tag">Graph DB</span>
+              <span class="skill-tag">FAISS</span>
+              <span class="skill-tag">Qdrant</span>
+              <span class="skill-tag">Ollama</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Data Science</h4>
+            <div class="skills-container">
+              <span class="skill-tag">Data Analysis</span>
+              <span class="skill-tag">Data Extraction</span>
+              <span class="skill-tag">Data Cleaning</span>
+              <span class="skill-tag">Web Scraping</span>
+              <span class="skill-tag">Geo-spatial Data</span>
+              <span class="skill-tag">Supervised Learning</span>
+              <span class="skill-tag">Unsupervised Learning</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Database & Cloud</h4>
+            <div class="skills-container">
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">NoSQL</span>
+              <span class="skill-tag">MongoDB</span>
+              <span class="skill-tag">Elasticsearch</span>
+              <span class="skill-tag">Apache Spark</span>
+              <span class="skill-tag">Azure</span>
+              <span class="skill-tag">AWS</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h4>Servizi & APIs</h4>
+            <div class="skills-container">
+              <span class="skill-tag">OpenAI</span>
+              <span class="skill-tag">Gemini</span>
+              <span class="skill-tag">APIs</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">Git</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section languages">
+          <h2>Lingue</h2>
+          <ul>
+            <li><strong>Italiano:</strong> Madrelingua</li>
+            <li><strong>Inglese:</strong> Tecnico/Professionale</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>Interessi</h2>
+          <div class="skills-container">
+            <span class="skill-tag">Video Games</span>
+            <span class="skill-tag">Photography</span>
+            <span class="skill-tag">Video Editing</span>
+            <span class="skill-tag">Statistics</span>
+            <span class="skill-tag">E-sports</span>
+            <span class="skill-tag">Calisthenics</span>
+            <span class="skill-tag">Logic Puzzles</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="section about">
+          <h2>Profilo Professionale</h2>
+          <p>
+            Tecnico elettronico e in sistemi di telecomunicazione, ho investito gli ultimi 2 anni allo studio e alla formazione con rigorosa disciplina in quello che prevedo essere una rivoluzione epocale nel mondo dell'innovazione tecnologica.
+          </p>
+          <p>
+            Mi sto specializzando in tutti i campi che riguardano l'intelligenza artificiale, sempre con grande focus sulla teoria e alla comprensione dei nuovi avanzamenti tecnologici, ma allo stesso tempo mettendo in pratica e testando il tutto in progetti personali.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>Esperienza Lavorativa</h2>
+          
+          <div class="experience-item">
+            <h3>Artificial Intelligence Researcher</h3>
+            <div class="company">Gruppo Euris Spa</div>
+            <div class="period">Marzo 2025 - Maggio 2025 (3 mesi)</div>
+            <div class="location">Padova, Veneto, Italy</div>
+            <div class="description">
+              Collaborazione con la divisione di Intelligenza Artificiale per ricerca di soluzioni qualitative e metriche per sistemi agentici basati su tecnologia RAG (Retrieval-Augmented Generation).
+              <ul>
+                <li>Sviluppo con setup locali (Ollama, modelli open-source)</li>
+                <li>Lavoro con vector databases (FAISS, Qdrant)</li>
+                <li>Specializzazione in OpenAI APIs con structured outputs</li>
+                <li>Tecniche avanzate NLP e graphRAG</li>
+                <li>Sviluppo web app dinamica con Streamlit per analisi dati</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <h3>Information Technology Intern</h3>
+            <div class="company">Tecnolaser S.r.l.</div>
+            <div class="period">Giugno 2024 - Agosto 2024 (3 mesi)</div>
+            <div class="location">Curtarolo, Veneto, Italy</div>
+            <div class="description">
+              Stage nel dipartimento IT con focus su applicazioni interne e sistemi ERP.
+              <ul>
+                <li>Gestione e manutenzione applicazioni interne</li>
+                <li>Supporto tecnico agli utenti interni</li>
+                <li>Sviluppo nuove funzionalità e aggiornamenti</li>
+                <li>Ottimizzazione processi ERP e creazione manuali utente</li>
+                <li>Sviluppo competenze in PHP, SQL, HTML e Docker</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <h3>Senior Gaming Revenue Accountant & Electronic Technician</h3>
+            <div class="company">Dalla Pria Entertainment Group</div>
+            <div class="period">Dicembre 2010 - Dicembre 2023 (13 anni)</div>
+            <div class="location">Piove Di Sacco</div>
+            <div class="description">
+              <ul>
+                <li>Riparazione elettrica ed elettronica di dispositivi entertainment</li>
+                <li>Gestione ricavi da dispositivi elettronici</li>
+                <li>Relazioni pubbliche e operazioni commerciali</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <h3>Telecommunications Equipment Technician</h3>
+            <div class="company">I.m.t.r</div>
+            <div class="period">Marzo 2006 - Aprile 2007</div>
+            <div class="location">Padova, Veneto, Italy</div>
+            <div class="description">
+              Tecnico specializzato in installazione e manutenzione sistemi telecomunicazioni, ponti radio e antenne per servizi internet e voce.
+              <ul>
+                <li>Sistemi GSM, UMTS, WiFi e linee fisse</li>
+                <li>Setup reti wireless su larga scala</li>
+                <li>Misurazioni di precisione per compatibilità elettromagnetica</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Formazione</h2>
+          
+          <div class="education-item">
+            <h3>ITS Diploma in Data Analysis and Artificial Intelligence</h3>
+            <div class="company">ITS Digital Academy</div>
+            <div class="period">Ottobre 2023 - Luglio 2025</div>
+            <div class="description">
+              Corso biennale - Artificial Intelligence & Data Specialist (EQ5)
+              <br><strong>Competenze acquisite:</strong> Reti Neurali Artificiali, AI, Analisi Statistica, Computer Vision, TensorFlow, Python, Data Extraction, SQL, ETL, GIS, Data Analytics, CNN, Web Scraping, Machine Learning
+            </div>
+          </div>
+
+          <div class="education-item">
+            <h3>Senior Technician for Certification - Electromagnetic Compatibility</h3>
+            <div class="company">ITIS F.Severi, Università di Padova</div>
+            <div class="period">2003 - 2004</div>
+            <div class="description">
+              Certificato Post-Diploma in Compatibilità Elettromagnetica. Corso su disturbi elettromagnetici, misurazioni in laboratori accreditati, processi di marcatura CE.
+            </div>
+          </div>
+
+          <div class="education-item">
+            <h3>Diploma - Electronics and Telecommunications Senior Technician</h3>
+            <div class="company">ITIS F.Severi</div>
+            <div class="period">1998 - 2003</div>
+            <div class="description">
+              Specializzazione in Elettronica e Telecomunicazioni, Sistemi Elettronici Automatici, Ingegneria Elettrica, Progettazione Tecnologica.
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>Profilo Personale e Soft Skills</h2>
+          <p>
+            Sono una persona molto solare e versatile che sa integrarsi facilmente in qualsiasi contesto lavorativo, costruendo rapidamente rapporti positivi con i colleghi. Credo fermamente che lavorare in un ambiente sereno e collaborativo sia una delle componenti più stimolanti della vita professionale, in grado di favorire sia la creatività che la produttività.
+          </p>
+          <p>
+            La mia natura scettica e analitica mi porta ad affrontare ogni decisione con razionalità, basando le mie scelte su ragionamenti logici e dati concreti. Amo le sfide e mettermi in gioco, cercando costantemente opportunità di crescita. Seguo con interesse canali di divulgazione scientifica di diversi ambiti, mantenendo una curiosità intellettuale sempre attiva. I miei interessi personali orbitano principalmente attorno alla tecnologia, ai videogiochi e alla cultura digitale, mentre cerco di mantenermi in forma attraverso il calisthenics.
+          </p>
+          <p>
+            <strong>Competenze Trasversali Principali:</strong> Collaborazione di squadra, versatilità, pensiero analitico, problem-solving, apprendimento continuo, comunicazione efficace e gestione dell'equilibrio vita-lavoro.
+          </p>
+        </div>
+
+        <div class="section" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e0e0e0; font-size: 0.85em; color: #666; text-align: center;">
+          <p>Autorizzo il trattamento dei miei dati personali contenuti nel presente curriculum vitae ai sensi del Regolamento UE 2016/679 (GDPR).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

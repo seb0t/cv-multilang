@@ -3,7 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sebastiano De Gobbi - CV Portfolio</title>
+  <title>Sebastiano De Gobbi - Multilingual CV Portfolio | AI & Data Specialist</title>
+  <meta name="description" content="Professional CV portfolio of Sebastiano De Gobbi, AI & Data Specialist and Electronics & Telecommunications Technician. Available in multiple languages.">
+  <meta name="keywords" content="AI, Data Science, Electronics, Telecommunications, CV, Portfolio, Sebastiano De Gobbi">
+  <meta name="author" content="Sebastiano De Gobbi">
+  
+  <!-- Open Graph tags for social media -->
+  <meta property="og:title" content="Sebastiano De Gobbi - CV Portfolio">
+  <meta property="og:description" content="AI & Data Specialist • Electronics & Telecommunications Technician">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./template/profile-pic_2.png">
+  <meta property="og:url" content="https://seb0t.github.io/cv-multilang/">
+  
+  <!-- Twitter Card tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sebastiano De Gobbi - CV Portfolio">
+  <meta name="twitter:description" content="AI & Data Specialist • Electronics & Telecommunications Technician">
+  <meta name="twitter:image" content="./template/profile-pic_2.png">
+  
+  <!-- PWA Meta Tags -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1e3a8a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="CV Portfolio">
+  <link rel="apple-touch-icon" href="template/profile-pic_2.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="template/profile-pic_2.png">
+  
   <style>
     * {
       margin: 0;
@@ -47,6 +75,11 @@
       object-fit: cover;
       margin: 0 auto 20px;
       display: block;
+      transition: transform 0.3s ease;
+    }
+    
+    .profile-image:hover {
+      transform: scale(1.05);
     }
     
     .header h1 {
@@ -120,6 +153,23 @@
       font-weight: 500;
       transition: all 0.3s ease;
       box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .language-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .language-button:hover::before {
+      left: 100%;
     }
     
     .language-button:hover {
@@ -128,8 +178,9 @@
       background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
     }
     
-    .language-button .flag {
-      font-size: 1.5em;
+    .language-button:focus {
+      outline: 2px solid #fbbf24;
+      outline-offset: 2px;
     }
     
     .contact-section {
@@ -162,10 +213,34 @@
     .contact-item a {
       color: #1e3a8a;
       text-decoration: none;
+      transition: color 0.3s ease;
     }
     
-    .contact-item a:hover {
+    .contact-item a:hover,
+    .contact-item a:focus {
+      color: #3b82f6;
       text-decoration: underline;
+    }
+    
+    /* Accessibility improvements */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
     
     @media (max-width: 768px) {
@@ -196,94 +271,274 @@
         gap: 15px;
       }
     }
+    
+    /* PWA Install Banner */
+    .install-banner {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      z-index: 1000;
+      text-align: center;
+      max-width: 300px;
+    }
+    
+    .install-banner button {
+      background: white;
+      color: #1e3a8a;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      margin: 0 5px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    
+    .install-banner button:hover {
+      background: #f1f5f9;
+    }
+    
+    /* Offline indicator */
+    .offline-indicator {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #ef4444;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      z-index: 1001;
+    }
   </style>
 </head>
 <body>
+  <!-- Offline indicator -->
+  <div class="offline-indicator" id="offlineIndicator">
+    You are currently offline. Some features may not be available.
+  </div>
+
+  <!-- PWA Install Banner -->
+  <div class="install-banner" id="installBanner">
+    <p>Install this app for a better experience!</p>
+    <button onclick="installPWA()">Install</button>
+    <button onclick="dismissInstallBanner()">Not now</button>
+  </div>
+
   <div class="container">
-    <div class="header">
-      <img src="template/profile-pic_2.png" alt="Sebastiano De Gobbi" class="profile-image">
+    <header class="header" role="banner">
+      <img src="template/profile-pic_2.png" alt="Professional headshot of Sebastiano De Gobbi" class="profile-image" loading="lazy">
       <h1>Sebastiano De Gobbi</h1>
       <div class="title">AI & Data Specialist • Electronics & Telecommunications Technician</div>
       <div class="welcome-text">
         Welcome to my professional portfolio. Please select your preferred language to view my curriculum vitae.
       </div>
-    </div>
+    </header>
 
-    <div class="content">
-      <div class="language-selection">
+    <main class="content" role="main">
+      <section class="language-selection">
         <h2>Select Language</h2>
         <p class="subtitle">Choose your preferred language to view my CV</p>
         
-        <div class="language-grid">
-          <a href="template/cv_it.html" class="language-button">
-            <span class="flag">🇮🇹</span>
+        <nav class="language-grid" role="navigation" aria-label="Language selection">
+          <a href="template/cv-it.html" class="language-button" lang="it" aria-label="View CV in Italian">
+            <span class="flag" aria-hidden="true">🇮🇹</span>
             <span>Italiano</span>
           </a>
           
-          <a href="template/cv_en.html" class="language-button">
-            <span class="flag">🇬🇧</span>
+          <a href="template/cv-en.html" class="language-button" lang="en" aria-label="View CV in English">
+            <span class="flag" aria-hidden="true">🇬🇧</span>
             <span>English</span>
           </a>
           
-          <a href="template/cv_es.html" class="language-button">
-            <span class="flag">🇪🇸</span>
+          <a href="template/cv-es.html" class="language-button" lang="es" aria-label="View CV in Spanish">
+            <span class="flag" aria-hidden="true">🇪🇸</span>
             <span>Español</span>
           </a>
           
-          <a href="template/cv_de.html" class="language-button">
-            <span class="flag">🇩🇪</span>
+          <a href="template/cv-de.html" class="language-button" lang="de" aria-label="View CV in German">
+            <span class="flag" aria-hidden="true">🇩🇪</span>
             <span>Deutsch</span>
           </a>
           
-          <a href="template/cv_fr.html" class="language-button">
-            <span class="flag">🇫🇷</span>
+          <a href="template/cv-fr.html" class="language-button" lang="fr" aria-label="View CV in French">
+            <span class="flag" aria-hidden="true">🇫🇷</span>
             <span>Français</span>
           </a>
           
-          <a href="template/cv_pt.html" class="language-button">
-            <span class="flag">🇵🇹</span>
+          <a href="template/cv-pt.html" class="language-button" lang="pt" aria-label="View CV in Portuguese">
+            <span class="flag" aria-hidden="true">🇵🇹</span>
             <span>Português</span>
           </a>
           
-          <a href="template/cv_zh.html" class="language-button">
-            <span class="flag">🇨🇳</span>
+          <a href="template/cv-zh.html" class="language-button" lang="zh" aria-label="View CV in Chinese">
+            <span class="flag" aria-hidden="true">🇨🇳</span>
             <span>中文</span>
           </a>
           
-          <a href="template/cv_ja.html" class="language-button">
-            <span class="flag">🇯🇵</span>
+          <a href="template/cv-ja.html" class="language-button" lang="ja" aria-label="View CV in Japanese">
+            <span class="flag" aria-hidden="true">🇯🇵</span>
             <span>日本語</span>
           </a>
           
-          <a href="template/cv_ko.html" class="language-button">
-            <span class="flag">🇰🇷</span>
+          <a href="template/cv-ko.html" class="language-button" lang="ko" aria-label="View CV in Korean">
+            <span class="flag" aria-hidden="true">🇰🇷</span>
             <span>한국어</span>
           </a>
-        </div>
-      </div>
+        </nav>
+      </section>
 
-      <div class="contact-section">
+      <section class="contact-section">
         <h3>Contact Information</h3>
         <div class="contact-info">
           <div class="contact-item">
-            <span>📧</span>
-            <a href="mailto:sebastiano.degobbi.pro@gmail.com">sebastiano.degobbi.pro@gmail.com</a>
+            <span aria-hidden="true">📧</span>
+            <a href="mailto:sebastiano.degobbi.pro@gmail.com" aria-label="Send email to Sebastiano">sebastiano.degobbi.pro@gmail.com</a>
           </div>
           <div class="contact-item">
-            <span>💼</span>
-            <a href="https://www.linkedin.com/in/sebastiano-de-gobbi/" target="_blank">LinkedIn</a>
+            <span aria-hidden="true">💼</span>
+            <a href="https://www.linkedin.com/in/sebastiano-de-gobbi/" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile (opens in new tab)">LinkedIn</a>
           </div>
           <div class="contact-item">
-            <span>💻</span>
-            <a href="https://github.com/seb0t" target="_blank">GitHub</a>
+            <span aria-hidden="true">💻</span>
+            <a href="https://github.com/seb0t" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile (opens in new tab)">GitHub</a>
           </div>
           <div class="contact-item">
-            <span>📍</span>
+            <span aria-hidden="true">📍</span>
             <span>Limena (PD), Italy</span>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   </div>
+
+  <script>
+    // PWA Variables
+    let deferredPrompt;
+    let isOnline = navigator.onLine;
+
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+          .then((registration) => {
+            console.log('SW registered: ', registration);
+            
+            // Check for updates
+            registration.addEventListener('updatefound', () => {
+              const newWorker = registration.installing;
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  // New content available, prompt user to refresh
+                  if (confirm('New content available! Click OK to refresh.')) {
+                    window.location.reload();
+                  }
+                }
+              });
+            });
+          })
+          .catch((registrationError) => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+
+    // PWA Install Prompt
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      showInstallBanner();
+    });
+
+    function showInstallBanner() {
+      const installBanner = document.getElementById('installBanner');
+      installBanner.style.display = 'block';
+    }
+
+    function installPWA() {
+      const installBanner = document.getElementById('installBanner');
+      installBanner.style.display = 'none';
+      
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the install prompt');
+          } else {
+            console.log('User dismissed the install prompt');
+          }
+          deferredPrompt = null;
+        });
+      }
+    }
+
+    function dismissInstallBanner() {
+      const installBanner = document.getElementById('installBanner');
+      installBanner.style.display = 'none';
+    }
+
+    // Handle PWA install
+    window.addEventListener('appinstalled', (evt) => {
+      console.log('PWA was installed');
+      const installBanner = document.getElementById('installBanner');
+      installBanner.style.display = 'none';
+    });
+
+    // Online/Offline status
+    function updateOnlineStatus() {
+      const offlineIndicator = document.getElementById('offlineIndicator');
+      
+      if (navigator.onLine) {
+        offlineIndicator.style.display = 'none';
+        isOnline = true;
+      } else {
+        offlineIndicator.style.display = 'block';
+        isOnline = false;
+      }
+    }
+
+    window.addEventListener('online', updateOnlineStatus);
+    window.addEventListener('offline', updateOnlineStatus);
+
+    // Initialize status
+    updateOnlineStatus();
+
+    // Smooth scrolling for internal links (if any)
+    document.addEventListener('DOMContentLoaded', function() {
+      const links = document.querySelectorAll('a[href^="#"]');
+      links.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth'
+            });
+          }
+        });
+      });
+    });
+
+    // Analytics (placeholder - add your tracking code)
+    function trackEvent(eventName, eventParams = {}) {
+      // Add your analytics tracking here
+      console.log('Event tracked:', eventName, eventParams);
+    }
+
+    // Track language selection
+    document.addEventListener('click', function(e) {
+      if (e.target.closest('.language-button')) {
+        const language = e.target.closest('.language-button').getAttribute('lang');
+        trackEvent('language_selected', { language: language });
+      }
+    });
+  </script>
 </body>
 </html>

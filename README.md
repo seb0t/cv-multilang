@@ -6,17 +6,14 @@ A modern, responsive, and accessible portfolio website showcasing my curriculum 
 
 - **Multilingual Support**: Available in 9 languages (Italian, English, Spanish, German, French, Portuguese, Chinese, Japanese, Korean)
 - **Responsive Design**: Optimized for all devices and screen sizes
-- **Accessibility**: WCAG compliant with screen reader support
 - **Modern UI/UX**: Clean, professional design with smooth animations
 - **SEO Optimized**: Meta tags and semantic HTML structure
-- **PWA Ready**: Progressive Web App capabilities for offline viewing
+- **Accessibility**: Semantic HTML and ARIA labels
 
 ## 🛠️ Technologies Used
 
 - **HTML5**: Semantic markup and accessibility features
 - **CSS3**: Modern styling with flexbox, grid, and gradients
-- **Vanilla JavaScript**: PWA functionality and user interactions
-- **Progressive Web App**: Service worker for offline functionality
 
 ## 📁 Project Structure
 
@@ -24,19 +21,17 @@ A modern, responsive, and accessible portfolio website showcasing my curriculum 
 cv-multilang/
 ├── index.html              # Main landing page with language selection
 ├── template/
-│   ├── cv-it.html          # Italian CV (to be renamed from cv_it.html)
-│   ├── cv-en.html          # English CV (to be renamed from cv_en.html)
-│   ├── cv-es.html          # Spanish CV (to be renamed from cv_es.html)
-│   ├── cv-de.html          # German CV (to be renamed from cv_de.html)
-│   ├── cv-fr.html          # French CV (to be renamed from cv_fr.html)
-│   ├── cv-pt.html          # Portuguese CV (to be renamed from cv_pt.html)
-│   ├── cv-zh.html          # Chinese CV (to be renamed from cv_zh.html)
-│   ├── cv-ja.html          # Japanese CV (to be renamed from cv_ja.html)
-│   ├── cv-ko.html          # Korean CV (to be renamed from cv_ko.html)
+│   ├── cv-it.html          # Italian CV 
+│   ├── cv-en.html          # English CV 
+│   ├── cv-es.html          # Spanish CV 
+│   ├── cv-de.html          # German CV 
+│   ├── cv-fr.html          # French CV 
+│   ├── cv-pt.html          # Portuguese CV 
+│   ├── cv-zh.html          # Chinese CV 
+│   ├── cv-ja.html          # Japanese CV 
+│   ├── cv-ko.html          # Korean CV 
 │   └── profile-pic_2.png   # Profile image
-├── manifest.json           # PWA manifest
-├── sw.js                   # Service worker
-├── rename_files.bat        # Script to rename CV files
+├── rename_files.bat        # Script to rename CV files (Windows)
 ├── .gitignore             # Git ignore rules
 ├── LICENSE                # MIT License
 └── README.md              # This file
@@ -44,7 +39,7 @@ cv-multilang/
 
 ## 🌐 Live Demo
 
-Visit the live portfolio: [GitHub Pages](https://seb0t.github.io/cv-multilang/) *(deploy when ready)*
+Deploy su GitHub Pages quando pronto: `https://seb0t.github.io/cv-multilang/`
 
 ## 📱 Supported Languages
 
@@ -74,7 +69,7 @@ Visit the live portfolio: [GitHub Pages](https://seb0t.github.io/cv-multilang/) 
 
 3. **Open locally**
    - Simply open `index.html` in your browser
-   - Or use a local server for full PWA functionality:
+   - Or use a local server:
    ```bash
    # Using Python
    python -m http.server 8000
@@ -101,7 +96,6 @@ Visit the live portfolio: [GitHub Pages](https://seb0t.github.io/cv-multilang/) 
      <span>Русский</span>
    </a>
    ```
-3. Update the service worker cache list in `sw.js`
 
 ### Updating Content
 
@@ -111,23 +105,17 @@ Visit the live portfolio: [GitHub Pages](https://seb0t.github.io/cv-multilang/) 
 
 ### Styling
 
-- All styles are contained in `index.html` within the `<style>` tag
+- All styles are contained within each HTML file's `<style>` tag
 - The design uses a modern blue gradient theme
 - Responsive design with mobile-first approach
-
-### PWA Configuration
-
-- **Icons**: Currently uses profile image as icon (can be enhanced with dedicated PWA icons)
-- **Manifest**: Update `manifest.json` with your details
-- **Service Worker**: Modify caching strategies in `sw.js`
 
 ## 🔧 Development
 
 ### Prerequisites
 
 - Modern web browser
-- Local server (optional, for PWA features)
 - Git (for version control)
+- Text editor or IDE
 
 ### File Naming Convention
 
@@ -138,7 +126,7 @@ The project uses dash-separated naming (`cv-en.html`) instead of underscore (`cv
 - **Email**: sebastiano.degobbi.pro@gmail.com
 - **LinkedIn**: [Sebastiano De Gobbi](https://www.linkedin.com/in/sebastiano-de-gobbi/)
 - **GitHub**: [seb0t](https://github.com/seb0t)
-- **Location**: Limena (PD), Italy
+- **Location**: Limena (PD), Italia
 
 ## 📄 License
 
@@ -156,17 +144,19 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📈 Features Implemented
+## 📈 Current Features
 
 - ✅ **Responsive Landing Page**: Modern design with language selection
-- ✅ **PWA Support**: Manifest and service worker for offline functionality
-- ✅ **Accessibility**: ARIA labels, semantic HTML, reduced motion support
-- ✅ **SEO Optimization**: Meta tags, Open Graph, Twitter Cards
-- ✅ **Modern Styling**: CSS Grid, Flexbox, gradients, smooth animations
+- ✅ **Multiple CV Versions**: 9 language versions with consistent styling
+- ✅ **Clean Design**: Professional layout with gradient themes
+- ✅ **Cross-browser Compatibility**: Works on all modern browsers
+- ✅ **Mobile Responsive**: Optimized for mobile devices
+- ✅ **Static Website**: No server-side dependencies
 
-## 🔜 Future Enhancements
+## 🔜 Potential Future Enhancements
 
-- [ ] Dedicated PWA icons in multiple sizes
+- [ ] PWA functionality (service worker, manifest)
+- [ ] JavaScript interactivity
 - [ ] Analytics integration
 - [ ] Dark/light theme toggle
 - [ ] Print-friendly CV versions
@@ -175,27 +165,110 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 ## 🚀 Deployment
 
-### GitHub Pages
+### GitHub Pages - Step by Step
 
-1. Push your code to GitHub
-2. Go to repository Settings > Pages
-3. Select source branch (usually `main`)
-4. Your site will be available at `https://yourusername.github.io/cv-multilang/`
+#### 1. Preparare il progetto
+Prima di tutto, assicurati che i file CV siano rinominati correttamente:
+```bash
+# Esegui lo script di rinomina se non l'hai già fatto
+rename_files.bat
+```
 
-### Other Hosting Options
+#### 2. Creare repository su GitHub
+1. Vai su [GitHub.com](https://github.com) e fai login
+2. Clicca su "New repository" (pulsante verde)
+3. Nome repository: `cv-multilang` 
+4. Descrizione: `Professional multilingual CV portfolio`
+5. Seleziona "Public" (necessario per GitHub Pages gratuito)
+6. **NON** selezionare "Add README" (hai già il tuo)
+7. Clicca "Create repository"
 
-- **Netlify**: Drag and drop deployment
-- **Vercel**: Git-based deployment
-- **Surge.sh**: Command-line deployment
+#### 3. Collegare il progetto locale a GitHub
+Apri il terminale/command prompt nella cartella del progetto e esegui:
+
+```bash
+# Inizializza git (se non già fatto)
+git init
+
+# Aggiungi tutti i file
+git add .
+
+# Primo commit
+git commit -m "Initial commit: Multilingual CV Portfolio"
+
+# Collega al repository GitHub (sostituisci 'seb0t' con il tuo username)
+git remote add origin https://github.com/seb0t/cv-multilang.git
+
+# Rinomina branch principale (opzionale, ma raccomandato)
+git branch -M main
+
+# Carica tutto su GitHub
+git push -u origin main
+```
+
+#### 4. Attivare GitHub Pages
+1. Vai al tuo repository su GitHub
+2. Clicca su "Settings" (tab in alto)
+3. Scorri fino a "Pages" nel menu laterale sinistro
+4. Sotto "Source", seleziona "Deploy from a branch"
+5. Seleziona branch "main" e cartella "/ (root)"
+6. Clicca "Save"
+
+#### 5. Verifica del deployment
+- GitHub mostrerà un messaggio: "Your site is published at https://seb0t.github.io/cv-multilang/"
+- Il deployment può richiedere 5-10 minuti la prima volta
+- Riceverai una email di conferma quando sarà pronto
+
+#### 6. Aggiornamenti futuri
+Per aggiornare il sito dopo modifiche:
+```bash
+git add .
+git commit -m "Descrizione delle modifiche"
+git push
+```
+
+### Troubleshooting
+
+#### Problemi comuni:
+- **404 Error**: Verifica che `index.html` sia nella root del repository
+- **File non trovati**: Assicurati di aver rinominato i file CV da `cv_xx.html` a `cv-xx.html`
+- **Immagini non visibili**: Controlla che `template/profile-pic_2.png` esista
+
+#### Test locale prima del deploy:
+```bash
+# Testa con un server locale
+python -m http.server 8000
+# Vai su http://localhost:8000
+```
+
+### Alternative a GitHub Pages
+
+#### Netlify (Raccomandato per facilità)
+1. Vai su [netlify.com](https://netlify.com)
+2. Drag & drop la cartella del progetto
+3. Sito online in 30 secondi!
+
+#### Vercel
+1. Vai su [vercel.com](https://vercel.com)
+2. Connetti il repository GitHub
+3. Deploy automatico ad ogni push
 
 ## 📝 Notes
 
-- Make sure to rename CV files from underscore to dash format before deployment
-- Test PWA functionality with a local server
-- All CV content files are in the `template/` directory
+- ✅ **Rinomina i file CV** da underscore a dash prima del deploy
+- ✅ **Testa localmente** prima di fare il push
+- ✅ **Controlla i link** che tutti i file esistano
+- ✅ **Portfolio statico** - nessuna dipendenza server-side necessaria
+
+### Post-Deployment Checklist
+- [ ] Sito accessibile all'URL GitHub Pages
+- [ ] Tutti i link delle lingue funzionano
+- [ ] Immagine profilo visibile
+- [ ] Design responsive su mobile
+- [ ] Tutti i CV si aprono correttamente
 
 ---
 
 ⭐ If you found this project helpful, please give it a star!
 
-Made with ❤️ and GenAi 
+Made with ❤️ by Sebastiano De Gobbi

@@ -31,6 +31,9 @@ cv-multilang/
 │   ├── cv-ja.html          # Japanese CV 
 │   ├── cv-ko.html          # Korean CV 
 │   └── profile-pic_2.png   # Profile image
+├── .github/
+│   └── workflows/
+│       └── static.yml      # GitHub Actions workflow (optional)
 ├── rename_files.bat        # Script to rename CV files (Windows)
 ├── .gitignore             # Git ignore rules
 ├── LICENSE                # MIT License
@@ -229,10 +232,38 @@ git push
 
 ### Troubleshooting
 
+#### Problemi di Deployment GitHub Pages:
+
+**Sito non si aggiorna dopo push:**
+1. **Controlla Actions tab** nel tuo repository GitHub
+2. **Verifica che il build sia completato** (icona verde ✅)
+3. **Aspetta 5-10 minuti** per la propagazione
+4. **Prova hard refresh** (Ctrl+F5 o Cmd+Shift+R)
+5. **Controlla browser cache** (modalità incognito)
+
+**Se hai aggiunto `static.yml`:**
+- Il file dovrebbe essere in `.github/workflows/static.yml`
+- GitHub Actions gestirà il deployment automaticamente
+- Vai su Settings > Pages e verifica che Source sia "GitHub Actions" invece di "Deploy from a branch"
+
+**Debug steps:**
+```bash
+# Verifica lo stato del repository
+git status
+
+# Forza push se necessario
+git push --force-with-lease
+
+# Controlla la cronologia
+git log --oneline
+```
+
 #### Problemi comuni:
 - **404 Error**: Verifica che `index.html` sia nella root del repository
 - **File non trovati**: Assicurati di aver rinominato i file CV da `cv_xx.html` a `cv-xx.html`
 - **Immagini non visibili**: Controlla che `template/profile-pic_2.png` esista
+- **Cache del browser**: Prova modalità incognito o svuota cache
+- **Build fallito**: Controlla tab "Actions" su GitHub per errori
 
 #### Test locale prima del deploy:
 ```bash
@@ -259,6 +290,8 @@ python -m http.server 8000
 - ✅ **Testa localmente** prima di fare il push
 - ✅ **Controlla i link** che tutti i file esistano
 - ✅ **Portfolio statico** - nessuna dipendenza server-side necessaria
+- ⚠️ **GitHub Pages cache** - possono servire 5-10 minuti per aggiornamenti
+- ⚠️ **Browser cache** - usa Ctrl+F5 per hard refresh
 
 ### Post-Deployment Checklist
 - [ ] Sito accessibile all'URL GitHub Pages
@@ -266,6 +299,50 @@ python -m http.server 8000
 - [ ] Immagine profilo visibile
 - [ ] Design responsive su mobile
 - [ ] Tutti i CV si aprono correttamente
+- [ ] Build Actions completato con successo (se usi static.yml)
+- [ ] Cache browser svuotata per test
+
+### GitHub Actions Workflow (Opzionale)
+
+Se hai problemi con il deployment automatico, puoi usare GitHub Actions. Il file `static.yml` dovrebbe contenere:
+
+```yaml
+# .github/workflows/static.yml
+name: Deploy static content to Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+```
 
 ---
 
